@@ -1,9 +1,9 @@
 {
     "title": "Common Sense",
-    "version": "a"
+    "version": "a1",
     "randomizeQuestions": true,
     "defaultPointValue": 2,
-    "defaultNumberOfInches": 4,
+    "defaultNumberOfInches": "4in",
 
     "questions": [
         {
@@ -23,7 +23,7 @@
             "question": "What is the answer?",
             "type": "open",
             "customPointValue": 3,
-            "customNumberOfInches": 1
+            "customNumberOfInches": "1in"
         }
 
     ]
