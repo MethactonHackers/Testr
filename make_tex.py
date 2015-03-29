@@ -40,7 +40,7 @@ OQuestionTEX = r"""\question
 
 
 TITLE = data['title']
-VERSION = data['version']
+#VERSION = data['version']
 
 mult_questions = []
 open_questions = []
