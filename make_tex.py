@@ -11,29 +11,29 @@ f = open("CurrentJSON.json", 'r')
 data = json.loads(f.read())
 f.close()
 
-preambleTEX = """\documentclass[addpoints]{{exam}}"""
+preambleTEX = r"""\documentclass[addpoints]{exam}"""
 
-documentTEX = """\begin{{document}}
+documentTEX = r"""\begin{{document}}
 \makebox[\textwidth]{{Name and section:\enspace\hrulefill}}
 \vspace{{0.2in}}
 \makebox[\textwidth]{{Instructor’s name:\enspace\hrulefill}}
 \begin{{questions}}
 {MQuestions}
-{OQuestion}
+{OQuestions}
 \end{{questions}}
 \end{{document}}
 """
 
-MQuestionTEX = """\question
+MQuestionTEX = r"""\question
 {Question}
 \begin{{choices}}
 {Choices}
 \end{{choices}}
 """
 
-ChoiceTEX = """\choice {choice}"""
+ChoiceTEX = r"""\choice {choice}"""
 
-OQuestionTEX = """\question
+OQuestionTEX = r"""\question
 {Question}
 \fillwithlines{{{Length}}}
 """
@@ -53,7 +53,7 @@ for item in data['questions']:
 			c = ChoiceTEX.format(choice=choice)
 			choices.append(c)
 		ch = "\n".join(choices)
-		currQ = MQuestionTEX.format(Question=question, choices=ch)
+		currQ = MQuestionTEX.format(Question=question, Choices=ch)
 		mult_questions.append(currQ)
 	elif item['type'] == 'open':
 		length = item['customNumberOfInches']
@@ -62,10 +62,12 @@ for item in data['questions']:
 	else:
 		pass
 
-mq = "\n".join(mult_question)
-oq = "\n".join(open_question)
+mq = "\n".join(mult_questions)
+oq = "\n".join(open_questions)
 finalTEX = preambleTEX + documentTEX.format(MQuestions=mq, OQuestions=oq)
 
-tex_file = open("CurrTEX.tex")
+tex_file = open("CurrTEX.tex", "w")
+tex_file.write(finalTEX)
+tex_file.close()
 
 subprocess.call("pdflatex CurrTEX.tex", shell=True)
