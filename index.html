@@ -265,7 +265,7 @@
         }
 
         function bake() {
-            var json = {
+            var orig_json = {
 
                 "title": $("#title").val(),
                 "version": "a1",
@@ -293,7 +293,7 @@
                 } else if (qjson.type === "open")
                     qjson.customNumberOfInches = "1in";
 
-                json.questions.push(qjson);
+                orig_json.questions.push(qjson);
             });
 
             //Switch Context
@@ -312,7 +312,7 @@
 
                 document.getElementById("downloads").appendChild(div);
 
-                json = randomizeQuestions(json);
+                var json = randomizeQuestions(JSON.parse(JSON.stringify(orig_json)));
                 json.version = version + "";
 
                 calls.push(function () {
