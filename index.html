@@ -260,10 +260,10 @@
         function bake() {
             var json = {
 
-                "title": "Common Sense",
+                "title": $("#title").val(),
                 //"version": "a1",
                 "randomizeQuestions": true,
-                "defaultPointValue": 2,
+                "defaultPointValue": +$("#copies").val(),
                 "defaultNumberOfInches": "4in",
                 "questions": []
             };
