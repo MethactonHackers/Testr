@@ -169,7 +169,10 @@
         }
 
         function fixQuestionNumbers() {
+            $(".question").each(function (index, elem) {
+                $(elem).find("legend").text("Question " + (index + 1));
 
+            });
 
         }
 
