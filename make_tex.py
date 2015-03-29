@@ -1,4 +1,5 @@
 import json
+import subprocess
 #import argparse
 
 #parser = argparse.ArgumentParser()
@@ -39,6 +40,7 @@ OQuestionTEX = """\question
 
 
 TITLE = data['title']
+VERSION = data['version']
 
 mult_questions = []
 open_questions = []
@@ -64,4 +66,6 @@ mq = "\n".join(mult_question)
 oq = "\n".join(open_question)
 finalTEX = preambleTEX + documentTEX.format(MQuestions=mq, OQuestions=oq)
 
-tex_file = open("")
+tex_file = open("CurrTEX.tex")
+
+subprocess.call("pdflatex CurrTEX.tex", shell=True)
