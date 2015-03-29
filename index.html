@@ -168,6 +168,11 @@
             update();
         }
 
+        function fixQuestionNumbers() {
+
+
+        }
+
         $(function () {
 
             $('.question-answer').bind('input', function () {
@@ -269,7 +274,7 @@
                     </div>
                 </div>
             </fieldset>
-            <button class="btn btn-danger glyphicon glyphicon-remove remove-button" onclick="alert('Nope!')"></button>
+            <button class="btn btn-danger glyphicon glyphicon-remove remove-button" onclick="$(this.parentNode).remove(); fixQuestionNumbers();"></button>
         </form>
     </div>
 
