@@ -49,6 +49,11 @@
             text-align: center;
         }
 
+        .center > * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .right {
             text-align: right;
         }
@@ -118,7 +123,7 @@
                     </li>
                     <li><a href="#">Getting Started</a>
                     </li>
-                    <li><a href="#">Help</a>
+                    <li><a href="#" onclick="document.getElementById('easter').style.display = 'initial';">Help</a>
                     </li>
                     <!--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -148,7 +153,7 @@
 
     <div id="questions" class="center">
         <form class="question">
-            <span class="full right" style="display: table;"><span>Question Type: </span>
+            <span class="full left" style="display: table;"><span>Question Type: </span>
             <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
                 <option value="multi">Multiple Choice</option>
                 <option value="open">Written Response</option>
