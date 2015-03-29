@@ -132,7 +132,12 @@
         }
 
         function addQuestion() {
-            $("#blank-question").children().clone().insertBefore($(".question-inserter"));
+            var question = $("#blank-question").children().clone();
+            question.insertBefore($(".question-inserter"));
+
+            question.find("legend").text("Question " + ($("#questions").find(".question").length - 1));
+
+
             scroll();
         }
 
