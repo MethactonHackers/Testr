@@ -120,10 +120,9 @@
             border: thick solid #999999;
             display: none;
         }
-        #logo{
 
+        #logo {
             float: left;
-
         }
     </style>
     <script>
@@ -222,7 +221,7 @@
 
         function addQuestion() {
             var question = $("#blank-question").children().clone();
-            question.insertBefore($(".question-inserter"));
+            question.insertBefore($(".question-inserter").first());
 
             question.find("legend").text("Question " + ($("#questions").find(".question").length - 1));
 
