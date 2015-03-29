@@ -314,7 +314,12 @@
                         json: JSON.stringify(json)
                     },
                     function (data, status) {
-                        var json = JSON.parse(data);
+                        try {
+                            var json = JSON.parse(data);
+                        } catch (err) {
+                            console.log(err);
+                            console.log(data);
+                        }
 
                         var status = $(div).find("#status");
                         status.children().remove();
