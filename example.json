@@ -1,0 +1,23 @@
+{
+    "title": "Common Sense",
+    "randomizeQuestions": true,
+    "defaultPointValue": 2,
+
+    "questions": [
+        {
+            "question": "What is the answer?",
+            "type":"multi",
+            "customPointValue": 500,
+            "answers": [
+                "I don't understand the premise.",
+                "42",
+                "24",
+                "Koala bear"
+            ],
+            "correctAnswer": 1 //Starts at zero
+        }
+
+    ]
+
+
+}
