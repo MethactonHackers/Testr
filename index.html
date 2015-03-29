@@ -289,11 +289,17 @@
                 json.questions.push(qjson);
             });
 
+            //Switch Context
+            document.getElementById("submit").display = "none";
+            document.getElementById("downloads").display = "initial";
+
             $.post("compile.php", {
                     json: JSON.stringify(json)
                 },
                 function (data, status) {
-                    document.write("Data: " + data + "\nStatus: " + status);
+                    var json = JSON.parse(data);
+
+                    window.location.href = json["location"];
                 }
             );
         }
@@ -338,7 +344,7 @@
                     </li>
                     <li><a href="#">About</a>
                     </li>
-                    <li><a href="#">Getting Started</a>
+                    <li><a href="getting_started.html">Getting Started</a>
                     </li>
                     <li><a href="#" onclick="document.getElementById('easter').style.display = 'initial';">Help</a>
                     </li>
@@ -366,60 +372,64 @@
     </nav>
 
     <img id="easter" src="http://i.imgur.com/mLltgiC.png">
-
-    <form id="title-form" class="well form-horizontal" onsubmit="return false;">
-        <label class="control-label">Title:</label>
-        <input class="form-control" type="text" id="title">
-        <label class="control-label">Number of Versions:</label>
-        <input class="form-control" type="text" id="copies">
-    </form>
-
-
-    <div id="questions" class="center">
+    <div id="submit">
+        <form id="title-form" class="well form-horizontal" onsubmit="return false;">
+            <label class="control-label">Title:</label>
+            <input class="form-control" type="text" id="title">
+            <label class="control-label">Number of Versions:</label>
+            <input class="form-control" type="text" id="copies">
+        </form>
 
 
-        <button class="question question-inserter btn btn-primary glyphicon glyphicon-plus" onclick="addQuestion(this.parentNode)"></button>
-        <button class="question question-inserter btn btn-primary glyphicon glyphicon-ok" onclick="bake()"></button>
-    </div>
-
-    <div id="blank-question" style="display: none;">
-        <form class="question well form-horizontal" onsubmit="return false;">
-            <fieldset>
-                <legend>Question 1</legend>
-                <div class="form-group">
-                    <label class="control-label">Question Type:</label>
-                    <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
-                        <option value="multi">Multiple Choice</option>
-                        <option value="open">Written Response</option>
-                    </select>
+        <div id="questions" class="center">
 
 
-                    <label class="control-label">Question:</label>
-                    <input id="question-text" name="question-text" type="text" class="form-control">
+            <button class="question question-inserter btn btn-primary glyphicon glyphicon-plus" onclick="addQuestion(this.parentNode)"></button>
+            <button class="question question-inserter btn btn-primary glyphicon glyphicon-ok" onclick="bake()"></button>
+        </div>
 
-                    <div id="multi">
-                        <label class="control-label">Possible Answers:</label>
-                        <input name="question-answer" type="text" class="question-answer form-control removeable" placeholder="press delete key to remove">
-                        <button class="add-answer btn btn-primary glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
-
-                        <label class="control-label">Correct Answer:</label>
-                        <select class="form-control correct-answer">
-                            <option name="1">1</option>
+        <div id="blank-question" style="display: none;">
+            <form class="question well form-horizontal" onsubmit="return false;">
+                <fieldset>
+                    <legend>Question 1</legend>
+                    <div class="form-group">
+                        <label class="control-label">Question Type:</label>
+                        <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
+                            <option value="multi">Multiple Choice</option>
+                            <option value="open">Written Response</option>
                         </select>
-                        <!--<div class="checkbox">
+
+
+                        <label class="control-label">Question:</label>
+                        <input id="question-text" name="question-text" type="text" class="form-control">
+
+                        <div id="multi">
+                            <label class="control-label">Possible Answers:</label>
+                            <input name="question-answer" type="text" class="question-answer form-control removeable" placeholder="press delete key to remove">
+                            <button class="add-answer btn btn-primary glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
+
+                            <label class="control-label">Correct Answer:</label>
+                            <select class="form-control correct-answer">
+                                <option name="1">1</option>
+                            </select>
+                            <!--<div class="checkbox">
                             <label class="control-label">
                                 <input class="rand-answers" type="checkbox" checked> Randomize Answers
                             </label>
                         </div>-->
+                        </div>
+                        <div id="open" style="display: none;">
+                        </div>
                     </div>
-                    <div id="open" style="display: none;">
-                    </div>
-                </div>
-            </fieldset>
-            <button class="btn btn-danger glyphicon glyphicon-remove remove-button" onclick="$(this.parentNode).remove(); fixQuestionNumbers();"></button>
-        </form>
+                </fieldset>
+                <button class="btn btn-danger glyphicon glyphicon-remove remove-button" onclick="$(this.parentNode).remove(); fixQuestionNumbers();"></button>
+            </form>
+        </div>
     </div>
+    <div id="downloads" style="display: none;">
 
+
+    </div>
 </body>
 
 </html>
