@@ -125,14 +125,11 @@
 
         }
 
-        function addQuestion(questions) {
-
-            var form = document.createElement("form");
-            form.className = "question well form-horizontal";
-            form.onsubmit = "return false;";
-
-
-
+        function addQuestion() {
+            $("#blank-question").children().clone().insertBefore($(".question-inserter"));
+            $("html, body").animate({
+                scrollTop: $(document).height()
+            }, "slow");
         }
 
         $(function () {
@@ -144,6 +141,7 @@
 
             });
 
+            $("#questions").prepend($("#blank-question").children().clone());
 
         });
     </script>
@@ -203,6 +201,13 @@
 
 
     <div id="questions" class="center">
+
+
+        <button class="question question-inserter btn btn-primary glyphicon glyphicon-plus" onclick="addQuestion(this.parentNode)"></button>
+
+    </div>
+
+    <div id="blank-question" style="display: none;">
         <form class="question well form-horizontal" onsubmit="return false;">
             <fieldset>
                 <legend>Question 1</legend>
@@ -228,9 +233,6 @@
                 </div>
             </fieldset>
         </form>
-
-        <button class="question btn btn-primary glyphicon glyphicon-plus" onclick="addQuestion(this.parentNode)"></button>
-
     </div>
 
 </body>
