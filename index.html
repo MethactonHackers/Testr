@@ -227,7 +227,7 @@
         }
 
         function fixQuestionNumbers() {
-            $(".question").each(function (index, elem) {
+            $(".question-question").each(function (index, elem) {
                 $(elem).find("legend").text("Question " + (index + 1));
 
             });
@@ -341,7 +341,8 @@
             })();
 
             var call = calls[0];
-            calls.shift(); call();
+            calls.shift();
+            call();
         }
 
 
@@ -429,7 +430,7 @@
         </div>
 
         <div id="blank-question" style="display: none;">
-            <form class="question well form-horizontal" onsubmit="return false;">
+            <form class="question question-question well form-horizontal" onsubmit="return false;">
                 <fieldset>
                     <legend>Question 1</legend>
                     <div class="form-group">
