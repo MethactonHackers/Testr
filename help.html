@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <style>
+#help{
+
+    position : absolute;
+    width : 100%;
+    height : 100%;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+   // Fade Out
+   $("#help").fadeOut(3000);
+
+});
+</script>
+</head>
+<body>
+<img id="help" src="help.png" alt="help">
+<pre>
+Hello and welcome to Testr, your one stop for all of your test making needs. So to kick off the help section we will start off with on FAQ.
+
+1.
+Q: What types of tests do you support?
+A: We currently support multible choice quiestions and short answer but in the future we plan on expanding.
+
+2.
+Q: How do I actully make a test? 
+A: Simply go <a href="WILL PUT THE URL HERE">here</a> and start using the simple to use UI.
+
+3.
+Q: How do I make a question?
+A: Click on the big blue + button and a new question field will apear along with slots for possible answers.
+
+4.
+Q: How do I create possible answers?
+A: Under the question you should see a slightly smaller big blue + button click than and it will allow you to add a new answer choice.
+
+5.
+Q: How do I delete a question if i]I do not want it?
+A: Simply click the red X at the top right of the webpage.
+
+6.
+Q: How do I delete an answer choice?
+A: Delete all of the text in the answer choice and then press backspace one more time and the text field should disappear.
+7.
+
+Q: How do I select the correct answer?
+A: Use the drop down at the bottom of the question so select what number answer is the correct one.
+
+VVV Any other questions feel free to email us below! VVV
+</pre>
+<form action="question.php" method="POST">
+    Email: <input name="email" type="email">
+    Question: <input name="question" type="text">
+    <input type="submit">
+</form>
+</body>
+</html>
