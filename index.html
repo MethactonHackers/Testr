@@ -137,7 +137,7 @@
             $('.question-answer').bind('input', function () {
                 var text = $(this).val(); // get the current value of the input field.
 
-                $(this).parent().children(".add-answer").toggleClass("disabled", text === "");
+                //$(this).parent().children(".add-answer").toggleClass("disabled", text === "");
 
             });
 
@@ -225,7 +225,7 @@
                     <div id="multi">
                         <label class="control-label">Possible Answers:</label>
                         <input name="question-answer" type="text" class="question-answer form-control">
-                        <button class="add-answer btn btn-primary disabled glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
+                        <button class="add-answer btn btn-primary glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
 
                     </div>
                     <div id="open" style="display: none;">
