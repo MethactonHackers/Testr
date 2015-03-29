@@ -243,16 +243,39 @@
                 "questions": []
             };
 
-            $(".questions").find(".question").each(function (index, q) {
+            $("#questions").find(".question").each(function (index, q) {
                 var question = $(q);
                 var qjson = {};
-                qjson.type = "";
+                qjson.type = question.find("#type").val();
+                qjson.question = question.find("#question-text").val();
+                if (qjson.type === "multi") {
+                    qjson.answers = [];
 
+                    question.find(".question-answer").each(function (i, ans) {
+                        var answer = $(ans);
+                        qjson.answers.push(answer.val());
 
+                    });
+                    qjson.correctAnswer = question.find(".correct-answer").val();
+
+                } else if (qjson.type === "open")
+                    qjson.customNumberOfInches = "1in";
 
                 json.questions.push(qjson);
             });
 
+            document.write(JSON.stringify(json));
+
+            $.ajax({
+                url: "compile.php",
+                method: "POST"
+
+
+            }).done(function () {
+
+
+
+            });
 
         }
 
