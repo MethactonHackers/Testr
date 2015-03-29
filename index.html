@@ -22,6 +22,10 @@
             background-color: aliceblue;
         }
 
+        #questions {
+            text-align: center;
+        }
+
         .question {
             border: solid 3px #948cc4;
             border-radius: 8px;
@@ -37,8 +41,8 @@
             margin-bottom: 2px;
         }
 
-        .left {
-            float: left;
+        .right {
+            text-align: right;
         }
 
         .full {
@@ -118,15 +122,15 @@
 
     <div id="questions">
         <form class="question">
-            <span class="full" style="display: table;"><span class="left" style="display:table-cell;">Question Type: </span>
-            <select name="question-type" style="display:table-cell;">
+            <span class="full right" style="display: table;"><span>Question Type: </span>
+            <select name="question-type" class="form-control">
                 <option value="multi">Multiple Choice</option>
                 <option value="open">Written Response</option>
             </select>
             </span>
 
 
-            <input name="question-text" type="text">
+            <input name="question-text" type="text" class="form-control">
 
         </form>
 
