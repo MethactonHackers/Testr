@@ -264,20 +264,15 @@
                 json.questions.push(qjson);
             });
 
-            document.write(JSON.stringify(json));
-
-            $.ajax({
-                url: "compile.php",
-                method: "POST"
-
-
-            }).done(function () {
-
-
-
-            });
-
+            $.post("compile.php", {
+                    json: JSON.stringify(json)
+                },
+                function (data, status) {
+                    document.write("Data: " + data + "\nStatus: " + status);
+                }
+            );
         }
+
 
         $(function () {
 
