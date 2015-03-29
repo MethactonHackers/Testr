@@ -73,7 +73,13 @@
             width: 100%;
         }
 
-        .new-answer {}
+        .answer::before {
+            content: "<span class='glyphicon plyphicon-minus'></span>";
+        }
+
+        #multi {
+            padding-left: 5%;
+        }
 
         #magic {
             /*Rainbows*/
@@ -105,10 +111,41 @@
             }
         }
 
-        function addAnswer() {
+        function addAnswer(multi) {
+            '<input name="question-answer" type="text" class="form-control"'
+
+            var input = document.createElement("input");
+            input.name = "question-answer";
+            input.type = "text";
+            input.className = "form-control";
+
+            var children = multi.childNodes;
+
+            multi.insertBefore(input, children[children.length - 2]);
+
+        }
+
+        function addQuestion(questions) {
+
+            var form = document.createElement("form");
+            form.className = "question well form-horizontal";
+            form.onsubmit = "return false;";
+
 
 
         }
+
+        $(function () {
+
+            $('.question-answer').bind('input', function () {
+                var text = $(this).val(); // get the current value of the input field.
+
+                $(this).parent().children(".add-answer").toggleClass("disabled", text === "");
+
+            });
+
+
+        });
     </script>
 </head>
 
@@ -166,7 +203,7 @@
 
 
     <div id="questions" class="center">
-        <form class="question well form-horizontal">
+        <form class="question well form-horizontal" onsubmit="return false;">
             <fieldset>
                 <legend>Question 1</legend>
                 <div class="form-group">
@@ -182,17 +219,17 @@
 
                     <div id="multi">
                         <label class="control-label">Possible Answers:</label>
-                        <input name="question-answer" type="text" class="form-control">
-                        <button class="btn btn-primary glyphicon glyphicon-plus left" onclick="addAnswer(this.parentNode)"></button>
+                        <input name="question-answer" type="text" class="question-answer form-control">
+                        <button class="add-answer btn btn-primary disabled glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
 
                     </div>
                     <div id="open" style="display: none;">
-                        Open Ended!
                     </div>
                 </div>
             </fieldset>
         </form>
 
+        <button class="question btn btn-primary glyphicon glyphicon-plus" onclick="addQuestion(this.parentNode)"></button>
 
     </div>
 
