@@ -41,6 +41,14 @@
             margin-bottom: 2px;
         }
 
+        .left {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
         .right {
             text-align: right;
         }
@@ -51,6 +59,10 @@
 
         .question input {
             width: 100%;
+        }
+
+        #magic {
+            /*Rainbows*/
         }
 
         #easter {
@@ -64,6 +76,20 @@
         }
     </style>
     <script>
+        var last;
+
+        function changeQuestionType(question) {
+            var type = question.querySelector("#type").value;
+            last = question;
+            if (type === "multi") {
+                question.querySelector("#multi").style.display = "initial";
+                question.querySelector("#open").style.display = "none";
+            }
+            if (type === "open") {
+                question.querySelector("#open").style.display = "initial";
+                question.querySelector("#multi").style.display = "none";
+            }
+        }
     </script>
 </head>
 
@@ -120,10 +146,10 @@
     <img id="easter" src="http://i.imgur.com/mLltgiC.png">
 
 
-    <div id="questions">
+    <div id="questions" class="center">
         <form class="question">
             <span class="full right" style="display: table;"><span>Question Type: </span>
-            <select name="question-type" class="form-control">
+            <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
                 <option value="multi">Multiple Choice</option>
                 <option value="open">Written Response</option>
             </select>
@@ -132,11 +158,17 @@
 
             <input name="question-text" type="text" class="form-control">
 
+            <div id="multi">
+                <span class="full left">Possible Answers:</span>
+            </div>
+            <div id="open" style="display: none;">
+                Open Ended!
+            </div>
+
         </form>
 
 
     </div>
-
 
 </body>
 
