@@ -325,7 +325,7 @@
 
                             var status = $(div).find("#status");
                             status.children().remove();
-                            status.append($("<a href=\"" + json["location"] + "\">Download</a>"));
+                            status.append($("<a target=\"_blank\" href=\"" + json["location"] + "\">Download</a>"));
 
                             $(div).find(".progress-bar").css("width", "100%");
 
