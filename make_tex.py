@@ -45,8 +45,12 @@ TITLE = data['title']
 mult_questions = []
 open_questions = []
 
+
 for item in data['questions']:
-	question = item['question']
+	try:
+		question = item['question']
+	except Exception as e:
+		continue
 	if item['type'] == 'multi':
 		choices = []
 		for choice in item['answers']:
@@ -70,4 +74,4 @@ tex_file = open("CurrTEX.tex", "w")
 tex_file.write(finalTEX)
 tex_file.close()
 
-subprocess.call("sudo pdflatex CurrTEX.tex", shell=True)
+subprocess.call("pdflatex CurrTEX.tex", shell=True)
