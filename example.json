@@ -1,5 +1,6 @@
 {
     "title": "Common Sense",
+    "version": "a"
     "randomizeQuestions": true,
     "defaultPointValue": 2,
     "defaultNumberOfInches": 4,
