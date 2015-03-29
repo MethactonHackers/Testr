@@ -22,14 +22,31 @@
             background-color: aliceblue;
         }
 
-        .main-button {
+        .question {
             border: solid 3px #948cc4;
             border-radius: 8px;
             padding: 10px;
             margin: 5px;
             text-align: center;
-            font-size: 200%;
             background-color: #cbe2f7;
+            width: 80%;
+        }
+
+        .question * {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .full {
+            width: 100%;
+        }
+
+        .question input {
+            width: 100%;
         }
 
         #easter {
@@ -99,6 +116,22 @@
     <img id="easter" src="http://i.imgur.com/mLltgiC.png">
 
 
+    <div id="questions">
+        <form class="question">
+            <span class="full" style="display: table;"><span class="left" style="display:table-cell;">Question Type: </span>
+            <select name="question-type" style="display:table-cell;">
+                <option value="multi">Multiple Choice</option>
+                <option value="open">Written Response</option>
+            </select>
+            </span>
+
+
+            <input name="question-text" type="text">
+
+        </form>
+
+
+    </div>
 
 
 </body>
