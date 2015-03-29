@@ -36,6 +36,7 @@
             background-color: #cbe2f7;*/
 
             width: 80%;
+            position: relative;
         }
 
         .question * {
@@ -77,8 +78,15 @@
             content: "<span class='glyphicon plyphicon-minus'></span>";
         }
 
+        .remove-button {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+        }
+
         #multi {
             padding-left: 5%;
+            padding-right: 5%;
         }
 
         #magic {
@@ -117,18 +125,36 @@
             }, "slow");
         }
 
+        function update() {
+
+            $(".removeable").bind("keydown", function (event) {
+                last = event;
+                if (event.keyCode === 46 && $(event.currentTarget).val() === "") {
+                    $(event.currentTarget).remove();
+
+                }
+
+
+            });
+
+        }
+
         function addAnswer(multi) {
             '<input name="question-answer" type="text" class="form-control"'
 
             var input = document.createElement("input");
             input.name = "question-answer";
             input.type = "text";
-            input.className = "form-control";
+            input.className = "form-control removeable";
+            input.placeholder = "press delete key to remove";
 
             var children = multi.childNodes;
 
             multi.insertBefore(input, children[children.length - 2]);
             scroll();
+
+            update();
+
         }
 
         function addQuestion() {
@@ -139,6 +165,7 @@
 
 
             scroll();
+            update();
         }
 
         $(function () {
@@ -151,6 +178,7 @@
             });
 
             $("#questions").prepend($("#blank-question").children().clone());
+            update();
 
         });
     </script>
@@ -233,7 +261,7 @@
 
                     <div id="multi">
                         <label class="control-label">Possible Answers:</label>
-                        <input name="question-answer" type="text" class="question-answer form-control">
+                        <input name="question-answer" type="text" class="question-answer form-control removeable" placeholder="press delete key to remove">
                         <button class="add-answer btn btn-primary glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
 
                     </div>
@@ -241,6 +269,7 @@
                     </div>
                 </div>
             </fieldset>
+            <button class="btn btn-danger glyphicon glyphicon-remove remove-button" onclick="alert('Nope!')"></button>
         </form>
     </div>
 
