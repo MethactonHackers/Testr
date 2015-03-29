@@ -1,3 +1,12 @@
+import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-j", "--json", help="Minified and Escaped json")
+args = parser.parse_args()
+
+data = json.loads(args.json)
+
 preambleTEX = """\documentclass[addpoints]{{exam}}"""
 
 documentTEX = """\begin{{document}}
@@ -24,4 +33,5 @@ OQuestionTEX = """\question
 {Question}
 \fillwithlines{{{Length}}}
 """
+
 
