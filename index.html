@@ -39,6 +39,22 @@
             position: relative;
         }
 
+        #title-form {
+            margin: 5px;
+            /*text-align: center;
+            background-color: #cbe2f7;*/
+
+            width: 80%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #title-form * {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
         .question * {
             margin-top: 2px;
             margin-bottom: 2px;
@@ -230,6 +246,8 @@
             $(".questions").find(".question").each(function (index, q) {
                 var question = $(q);
                 var qjson = {};
+                qjson.type = "";
+
 
 
                 json.questions.push(qjson);
@@ -306,10 +324,11 @@
 
     <img id="easter" src="http://i.imgur.com/mLltgiC.png">
 
-    <form id="title-form" style="width: 80%;">
+    <form id="title-form" class="well form-horizontal" onsubmit="return false;">
         <label class="control-label">Title:</label>
         <input class="form-control" type="text" id="title">
-
+        <label class="control-label">Number of Versions:</label>
+        <input class="form-control" type="text" id="copies">
     </form>
 
 
