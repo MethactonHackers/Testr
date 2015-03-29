@@ -1,1 +1,1 @@
-<?php if (isset($_POST[ "json"])) { $json=$_POST[ "json"]; $json=addslashes($json); }else echo "{'success': false, 'details': 'y u dumb'}"; ?>
+<?php if (isset($_POST[ "json"])) { $json=$_POST[ "json"]; $json=addslashes($json); file_put_contents( "CurrentJSON.json", $json); $command_output=` python make_tex.py`; $milliseconds=round(microtime(true) * 1000); $file=hash( "sha256", "$milliseconds"); mkdir( "temp"); copy( "CurrTEX.pdf", "temp/".$file); unlink( "CurrTEX.pdf");}else echo "{'success': false, 'details': 'y u dumb'}"; ?>
