@@ -2,12 +2,12 @@
     "title": "Common Sense",
     "randomizeQuestions": true,
     "defaultPointValue": 2,
-    "defaultNumberOfLines": 4,
+    "defaultNumberOfInches": 4,
 
     "questions": [
         {
             "question": "What is the answer?",
-            "type":"multi",
+            "type": "multi",
             "customPointValue": 500,
             "answers": [
                 "I don't understand the premise.",
@@ -15,13 +15,14 @@
                 "24",
                 "Koala bear"
             ],
+            "randomizeAnswer": true,
             "correctAnswer": 1
         },
         {
             "question": "What is the answer?",
-            "type":"open",
+            "type": "open",
             "customPointValue": 3,
-            "customNumberOfLines": 1
+            "customNumberOfInches": 1
         }
 
     ]
