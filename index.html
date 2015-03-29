@@ -19,7 +19,7 @@
         }
 
         body {
-            background-color: aliceblue;
+            /*background-color: aliceblue;*/
         }
 
         #questions {
@@ -27,12 +27,14 @@
         }
 
         .question {
-            border: solid 3px #948cc4;
+            /*border: solid 3px #948cc4;
             border-radius: 8px;
-            padding: 10px;
+            padding: 10px;*/
+
             margin: 5px;
-            text-align: center;
-            background-color: #cbe2f7;
+            /*text-align: center;
+            background-color: #cbe2f7;*/
+
             width: 80%;
         }
 
@@ -43,6 +45,11 @@
 
         .left {
             text-align: left;
+        }
+
+        .left > * {
+            margin-left: initial;
+            margin-right: initial;
         }
 
         .center {
@@ -96,6 +103,11 @@
                 question.querySelector("#open").style.display = "initial";
                 question.querySelector("#multi").style.display = "none";
             }
+        }
+
+        function addAnswer() {
+
+
         }
     </script>
 </head>
@@ -154,27 +166,31 @@
 
 
     <div id="questions" class="center">
-        <form class="question">
-            <span class="full left" style="display: table;"><span>Question Type: </span>
-            <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
-                <option value="multi">Multiple Choice</option>
-                <option value="open">Written Response</option>
-            </select>
-            </span>
+        <form class="question well form-horizontal">
+            <fieldset>
+                <legend>Question 1</legend>
+                <div class="form-group">
+                    <label class="control-label">Question Type:</label>
+                    <select id="type" name="question-type" class="form-control" onchange="changeQuestionType(this.parentNode.parentNode)">
+                        <option value="multi">Multiple Choice</option>
+                        <option value="open">Written Response</option>
+                    </select>
 
 
-            <input name="question-text" type="text" class="form-control">
+                    <label class="control-label">Question:</label>
+                    <input name="question-text" type="text" class="form-control">
 
-            <div id="multi">
-                <span class="full left">Possible Answers:</span>
-                <input name="question-answer" type="text" class="form-control">
-                <button class="btn btn-primary glyphicon glyphicon-plus left"></button>
+                    <div id="multi">
+                        <label class="control-label">Possible Answers:</label>
+                        <input name="question-answer" type="text" class="form-control">
+                        <button class="btn btn-primary glyphicon glyphicon-plus left" onclick="addAnswer(this.parentNode)"></button>
 
-            </div>
-            <div id="open" style="display: none;">
-                Open Ended!
-            </div>
-
+                    </div>
+                    <div id="open" style="display: none;">
+                        Open Ended!
+                    </div>
+                </div>
+            </fieldset>
         </form>
 
 
