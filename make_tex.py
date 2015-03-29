@@ -70,4 +70,4 @@ tex_file = open("CurrTEX.tex", "w")
 tex_file.write(finalTEX)
 tex_file.close()
 
-subprocess.call("pdflatex CurrTEX.tex", shell=True)
+subprocess.call("sudo pdflatex CurrTEX.tex", shell=True)
