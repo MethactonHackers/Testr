@@ -1,11 +1,14 @@
 import json
-import argparse
+#import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-j", "--json", help="Minified and Escaped json")
-args = parser.parse_args()
+#parser = argparse.ArgumentParser()
+#parser.add_argument("-j", "--json", help="Minified and Escaped json")
+#args = parser.parse_args()
 
-data = json.loads(args.json)
+#data = json.loads(args.json)
+f = open("CurrentJSON.json", 'r')
+data = json.loads(f.read())
+f.close()
 
 preambleTEX = """\documentclass[addpoints]{{exam}}"""
 
@@ -15,8 +18,8 @@ documentTEX = """\begin{{document}}
 \makebox[\textwidth]{{Instructor’s name:\enspace\hrulefill}}
 \begin{{questions}}
 {MQuestions}
-\end{{questions}}
 {OQuestion}
+\end{{questions}}
 \end{{document}}
 """
 
@@ -35,3 +38,30 @@ OQuestionTEX = """\question
 """
 
 
+TITLE = data['title']
+
+mult_questions = []
+open_questions = []
+
+for item in data['questions']:
+	question = item['question']
+	if item['type'] == 'multi':
+		choices = []
+		for choice in item['answers']:
+			c = ChoiceTEX.format(choice=choice)
+			choices.append(c)
+		ch = "\n".join(choices)
+		currQ = MQuestionTEX.format(Question=question, choices=ch)
+		mult_questions.append(currQ)
+	elif item['type'] == 'open':
+		length = item['customNumberOfLines']
+		currQ = OQuestionTEX.format(Question=question, Length=length)
+		open_questions.append(currQ)
+	else:
+		pass
+
+mq = "\n".join(mult_question)
+oq = "\n".join(open_question)
+finalTEX = preambleTEX + documentTEX.format(MQuestions=mq, OQuestions=oq)
+
+tex_file = open("")
