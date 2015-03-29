@@ -54,7 +54,7 @@ for item in data['questions']:
 		currQ = MQuestionTEX.format(Question=question, choices=ch)
 		mult_questions.append(currQ)
 	elif item['type'] == 'open':
-		length = item['customNumberOfLines']
+		length = item['customNumberOfInches']
 		currQ = OQuestionTEX.format(Question=question, Length=length)
 		open_questions.append(currQ)
 	else:
