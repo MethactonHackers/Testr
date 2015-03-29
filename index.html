@@ -130,7 +130,20 @@
             $(".removeable").bind("keydown", function (event) {
                 last = event;
                 if (event.keyCode === 46 && $(event.currentTarget).val() === "") {
+                    var parent = event.currentTarget.parentNode;
+                    var index = 0;
+                    $(".removeable").each(function (i, elem) {
+                        if (elem === event.currentTarget) {
+                            index = i;
+                        }
+                    });
+
+
                     $(event.currentTarget).remove();
+
+
+
+                    redoCorrectAnswerSelector(parent);
 
                 }
 
@@ -145,15 +158,42 @@
             var input = document.createElement("input");
             input.name = "question-answer";
             input.type = "text";
-            input.className = "form-control removeable";
+            input.className = "question-answer form-control removeable";
             input.placeholder = "press delete key to remove";
 
             var children = multi.childNodes;
 
-            multi.insertBefore(input, children[children.length - 2]);
+            multi.insertBefore(input, multi.querySelector(".add-answer"));
             scroll();
 
             update();
+
+            /*var select = $(multi).find(".correct-answer");
+            var number = select.children().length + 1;
+
+            select.append($("<option name='" + number + "'>" + number + "</option>"));*/
+            redoCorrectAnswerSelector(multi);
+
+        }
+
+        function redoCorrectAnswerSelector(multi, removedInputIndex) {
+            var answers = $(multi).find(".question-answer");
+
+            var correctAnswer = $(multi).find(".correct-answer")
+            correctAnswer.children().remove();
+            answers.each(function (index, elem) {
+                var number = index + 1;
+                correctAnswer.append($("<option name='" + number + "'>" + number + "</option>"));
+
+            });
+
+            if (removedInputIndex !== undefined) {
+                if (+correctAnswer.value === removedInputIndex) {
+                    correctAnswer.value = undefined;
+                } else if (+correctAnswer.value > removedInputIndex) {
+                    correctAnswer.value = (+correctAnswer.value) - 1;
+                }
+            }
 
         }
 
@@ -173,6 +213,28 @@
                 $(elem).find("legend").text("Question " + (index + 1));
 
             });
+
+        }
+
+        function bake() {
+            var json = {
+
+                "title": "Common Sense",
+                //"version": "a1",
+                "randomizeQuestions": true,
+                "defaultPointValue": 2,
+                "defaultNumberOfInches": "4in",
+                "questions": []
+            };
+
+            $(".questions").find(".question").each(function (index, q) {
+                var question = $(q);
+                var qjson = {};
+
+
+                json.questions.push(qjson);
+            });
+
 
         }
 
@@ -244,6 +306,12 @@
 
     <img id="easter" src="http://i.imgur.com/mLltgiC.png">
 
+    <form id="title-form" style="width: 80%;">
+        <label class="control-label">Title:</label>
+        <input class="form-control" type="text" id="title">
+
+    </form>
+
 
     <div id="questions" class="center">
 
@@ -272,6 +340,15 @@
                         <input name="question-answer" type="text" class="question-answer form-control removeable" placeholder="press delete key to remove">
                         <button class="add-answer btn btn-primary glyphicon glyphicon-plus full" onclick="addAnswer(this.parentNode)"></button>
 
+                        <label class="control-label">Correct Answer:</label>
+                        <select class="form-control correct-answer">
+                            <option name="1">1</option>
+                        </select>
+                        <!--<div class="checkbox">
+                            <label class="control-label">
+                                <input class="rand-answers" type="checkbox" checked> Randomize Answers
+                            </label>
+                        </div>-->
                     </div>
                     <div id="open" style="display: none;">
                     </div>
