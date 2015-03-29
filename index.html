@@ -238,6 +238,7 @@
             var questions = json.questions;
             questions = shuffle(questions);
             json.questions = questions;
+            return json;
         }
 
         function shuffle(array) {
