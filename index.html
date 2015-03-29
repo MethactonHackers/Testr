@@ -111,6 +111,12 @@
             }
         }
 
+        function scroll() {
+            $("html, body").animate({
+                scrollTop: $(document).height()
+            }, "slow");
+        }
+
         function addAnswer(multi) {
             '<input name="question-answer" type="text" class="form-control"'
 
@@ -122,14 +128,12 @@
             var children = multi.childNodes;
 
             multi.insertBefore(input, children[children.length - 2]);
-
+            scroll();
         }
 
         function addQuestion() {
             $("#blank-question").children().clone().insertBefore($(".question-inserter"));
-            $("html, body").animate({
-                scrollTop: $(document).height()
-            }, "slow");
+            scroll();
         }
 
         $(function () {
