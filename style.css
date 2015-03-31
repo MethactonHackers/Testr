@@ -104,3 +104,8 @@
             border: thick solid #999999;
             display: none;
         }
+        #logo{
+
+            transform: translate(0px, -24px);
+
+        }
