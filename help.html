@@ -7,60 +7,30 @@
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="cosmo.css">
-
+    <link rel="stylesheet" href="style.css">
     <script src="jquery-2.1.3.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
- <style>
-#help{
 
-    position : absolute;
-    width : 100%;
-    height : 100%;
-}
-</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-<script type="text/javascript">
+ <script src="ajaxUtil.js"></script>
+ <script type="text/javascript">
 $(function(){
 
    // Fade Out
    $("#help").fadeOut(3000);
+   ajax("navBarCreate.php", ajaxCallBack, "post");
+
+        function ajaxCallBack(callBack){
+
+        document.getElementById("navBar").innerHTML = callBack;
+            
+    }
 
 });
 </script>
 </head>
 <body>
-	    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Testr</a>
-            </div>
-
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Upload .tstr <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li><a href="#">About</a>
-                    </li>
-                    <li><a href="#">Getting Started</a>
-                    </li>
-                    <li><a href="#" onclick="document.getElementById('easter').style.display = 'initial';">Help</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
+    <div id="navBar"></div>
 <img id="help" src="help.png" alt="help">
 <pre>
 Hello and welcome to Testr, your one stop for all of your test making needs. So to kick off the help section we will start off with on FAQ.
