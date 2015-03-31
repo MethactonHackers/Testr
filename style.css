@@ -104,10 +104,3 @@
             border: thick solid #999999;
             display: none;
         }
-
-        #logo {
-            
-            position: absolute;
-            float: left;
-            top: 10px;
-        }
