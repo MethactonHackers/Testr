@@ -1,6 +1,6 @@
 <?php
 
-$contents = file_get_contents(navBar.html);
+$contents = file_get_contents("navBar.html");
 
 trim($contents);
 
