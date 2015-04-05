@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.3.28)  29 MAR 2015 09:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.3.30)  3 APR 2015 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -122,25 +122,18 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 2--5
 This exam contains 3 questions with 0 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 0 points.
 This exam has a total of 0 bonus points.
-
-Class exam Warning: Point totals have changed. Rerun to get point totals right.
-
-
-(./CurrTEX.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(./CurrTEX.aux) ) 
 Here is how much of TeX's memory you used:
- 1160 strings out of 493108
- 14699 string characters out of 6140725
- 77352 words of memory out of 5000000
- 4703 multiletter control sequences out of 15000+600000
+ 1167 strings out of 493108
+ 14839 string characters out of 6140725
+ 78352 words of memory out of 5000000
+ 4710 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,19p,164b,170s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on CurrTEX.pdf (1 page, 17372 bytes).
+ 29i,9n,19p,163b,166s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b>
+Output written on CurrTEX.pdf (1 page, 17203 bytes).
 PDF statistics:
  12 PDF objects out of 1000 (max. 8388607)
  7 compressed objects within 1 object stream
